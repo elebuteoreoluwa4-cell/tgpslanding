@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ghostwriting Profit System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0B0D;
+    --purple:#A21CAF;
+    --purple-bright:#D946EF;
+    --gold:#D4AF37;
+    --gold-bright:#F0CC6B;
+    --white:#FFFFFF;
+    --grey:#A3A0A8;
+    --green:#25D366;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important;transition:none !important;} }
+  body{
+    background:var(--bg);color:var(--grey);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;font-size:17px;
+    overflow-x:hidden;padding-bottom:78px;
+  }
+  img{max-width:100%;display:block;border-radius:10px;}
+  a{color:inherit;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 22px;}
+
+  h1,h2{font-family:'Poppins',sans-serif;font-weight:900;color:var(--white);line-height:1.12;}
+  h1{font-size:clamp(32px,8.5vw,48px);}
+  h2{font-size:clamp(26px,6.5vw,34px);}
+  .hl-purple{color:var(--purple-bright);}
+  .hl-gold{color:var(--gold);}
+  p{font-size:17px;color:var(--grey);}
+
+  section{padding:56px 0;}
+
+  .marquee{
+    background:linear-gradient(90deg, var(--purple), var(--purple-bright));
+    overflow:hidden;white-space:nowrap;padding:13px 0;
+  }
+  .marquee-track{display:inline-block;animation:scroll-left 16s linear infinite;}
+  .marquee span{
+    display:inline-block;padding:0 26px;color:#fff;font-weight:700;
+    font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;
+  }
+  @keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  .hero{padding:52px 0 44px;text-align:left;}
+  .eyebrow{
+    display:inline-block;font-family:'Poppins',sans-serif;font-weight:800;
+    color:var(--purple-bright);letter-spacing:.1em;text-transform:uppercase;font-size:13.5px;
+    margin-bottom:18px;
+  }
+  .hero .story p{margin-bottom:12px;}
+  .hero .story .final{color:var(--white);font-weight:600;margin-top:16px;}
+
+  .btn-wa{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:var(--green);color:#062F13;font-weight:800;font-size:17px;font-family:'Poppins',sans-serif;
+    padding:17px 30px;border-radius:12px;text-decoration:none;width:100%;
+    box-shadow:0 10px 26px rgba(37,211,102,.35);
+    transition:transform .2s ease;
+  }
+  .btn-wa:hover{transform:translateY(-2px);}
+  .btn-wa svg{width:22px;height:22px;flex-shrink:0;}
+  .cta-block{margin-top:30px;}
+
+  .beam-callout{
+    position:relative;background:rgba(162,28,175,.08);
+    border:1px solid rgba(162,28,175,.3);border-radius:14px;
+    padding:16px 20px;margin:24px 0;overflow:hidden;
+  }
+  .beam-callout .txt{position:relative;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;
+    color:var(--white);letter-spacing:.01em;}
+  .beam-callout .hl{color:var(--gold);}
+
+  .change-card{
+    border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:26px 22px;margin-top:18px;
+  }
+  .change-card .ico{font-size:30px;margin-bottom:14px;display:block;}
+  .change-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:19px;color:var(--white);margin-bottom:8px;}
+  .change-card p{font-size:15.5px;}
+
+  /* STORY PHOTOS */
+  .story-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;}
+  .story-photos figure{position:relative;overflow:hidden;border-radius:12px;border:1px solid rgba(212,175,55,.3);}
+  .story-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;}
+  .story-photos figcaption{
+    margin-top:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);text-align:center;
+  }
+  .story-hero-photo{margin-top:26px;border-radius:14px;overflow:hidden;border:1px solid rgba(212,175,55,.3);}
+  .story-hero-photo img{width:100%;object-fit:cover;max-height:440px;}
+
+  .stat-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid rgba(212,175,55,.3);border-radius:14px;overflow:hidden;margin-top:30px;
+  }
+  .stat-box{
+    padding:24px 18px;text-align:center;
+    border-right:1px solid rgba(212,175,55,.2);border-bottom:1px solid rgba(212,175,55,.2);
+  }
+  .stat-box:nth-child(2n){border-right:none;}
+  .stat-box .num{font-family:'Poppins',sans-serif;font-weight:900;font-size:30px;color:var(--gold);}
+  .stat-box .lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-top:6px;}
+
+  .mod-item{display:flex;gap:20px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+  .mod-item:last-child{border-bottom:none;}
+  .mod-item .n{
+    font-family:'Poppins',sans-serif;font-weight:900;font-size:24px;color:var(--gold);
+    flex-shrink:0;width:38px;
+  }
+  .mod-item h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:var(--white);margin-bottom:6px;}
+  .mod-item p{font-size:15.5px;margin-bottom:5px;}
+  .mod-item p:last-child{margin-bottom:0;}
+
+  .bonus-row{
+    display:flex;align-items:center;gap:14px;
+    padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08);
+    font-family:'Poppins',sans-serif;font-size:17px;color:var(--white);
+  }
+  .bonus-row:last-child{border-bottom:none;}
+  .bonus-row .mark{color:var(--gold);font-size:16px;flex-shrink:0;}
+
+  .comm-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+  .comm-list li{display:flex;gap:12px;align-items:baseline;color:var(--white);font-size:16px;}
+  .comm-list li::before{content:"—";color:var(--gold);flex-shrink:0;}
+
+  /* RESULT SCREENSHOTS GRID */
+  .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;}
+  .result-grid img{
+    width:100%;border-radius:10px;border:1px solid rgba(212,175,55,.25);
+    transition:transform .3s ease;
+  }
+  .result-grid img:hover{transform:translateY(-4px);}
+
+  /* WRITTEN REVIEW CARDS */
+  .review-card{
+    background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.2);
+    border-radius:12px;overflow:hidden;margin-top:18px;
+  }
+  .review-card img{border-radius:0;}
+
+  .stars{color:var(--gold);font-size:20px;letter-spacing:4px;margin-bottom:8px;}
+
+  .urgency-box{
+    background:linear-gradient(135deg, rgba(162,28,175,.18), rgba(212,175,55,.1));
+    border:2px solid var(--purple-bright);
+    border-radius:16px;padding:22px 20px;margin-top:24px;
+    box-shadow:0 0 30px rgba(217,70,239,.15);
+  }
+  .urgency-box .label{
+    color:var(--gold-bright);font-weight:900;font-family:'Poppins',sans-serif;font-size:15px;
+    display:flex;align-items:center;gap:8px;justify-content:center;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .timer-row{display:flex;gap:8px;margin-top:18px;}
+  .timer-box{
+    flex:1;background:rgba(0,0,0,.4);border:1px solid rgba(212,175,55,.4);
+    border-radius:10px;padding:12px 6px;text-align:center;
+  }
+  .timer-box .n{font-family:'Poppins',sans-serif;font-weight:900;font-size:22px;color:var(--gold-bright);}
+  .timer-box .l{font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--grey);}
+
+  .price-block{text-align:center;margin-top:30px;}
+  .price-was{font-size:18px;color:var(--grey);text-decoration:line-through;}
+  .price-now{font-family:'Poppins',sans-serif;font-weight:900;font-size:56px;color:var(--white);line-height:1;margin:6px 0 14px;}
+  .save-pill{
+    display:inline-block;background:rgba(162,28,175,.25);color:var(--purple-bright);
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;
+    padding:8px 18px;border-radius:999px;margin-bottom:24px;
+  }
+
+  .faq-item{border-bottom:1px solid rgba(255,255,255,.1);}
+  .faq-q{
+    width:100%;background:none;border:none;cursor:pointer;text-align:left;
+    padding:22px 0;font-weight:700;font-size:16.5px;color:var(--white);
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  .faq-q .chev{color:var(--gold);font-size:22px;font-weight:300;flex-shrink:0;transition:transform .3s ease;}
+  .faq-item.open .faq-q .chev{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+  .faq-item.open .faq-a{max-height:240px;}
+  .faq-a p{font-size:15px;padding-bottom:22px;}
+
+  .video-embed{
+    width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+    border:1px solid rgba(212,175,55,.3);margin-top:24px;
+  }
+  .video-embed iframe{width:100%;height:100%;border:none;}
+
+  .final{text-align:center;padding:70px 0;}
+
+  .sticky-bar{
+    position:fixed;bottom:0;left:0;right:0;z-index:60;
+    background:rgba(11,11,13,.96);backdrop-filter:blur(10px);
+    border-top:1px solid rgba(212,175,55,.3);
+    padding:12px 16px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .sticky-bar .price{flex-shrink:0;}
+  .sticky-bar .price .was{font-size:12px;color:var(--grey);text-decoration:line-through;}
+  .sticky-bar .price .now{font-family:'Poppins',sans-serif;font-weight:900;font-size:22px;color:var(--white);}
+  .sticky-bar .btn-wa{padding:13px 22px;font-size:15px;width:auto;}
+
+  ::selection{background:var(--purple);color:#fff;}
+</style>
+</head>
+<body>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>✦ THE GHOSTWRITING PROFIT SYSTEM</span><span>✦ 20 PAYING PLATFORMS INCLUDED</span><span>✦ BEGINNER FRIENDLY</span><span>✦ LEARN FROM YOUR PHONE</span><span>✦ THE GHOSTWRITING PROFIT SYSTEM</span><span>✦ 20 PAYING PLATFORMS INCLUDED</span><span>✦ BEGINNER FRIENDLY</span><span>✦ LEARN FROM YOUR PHONE</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">✋ Wait — Read This First</span>
+    <h1 class="reveal">Before You Spend Another Month Looking For The Online <span class="hl-purple">Skill…</span></h1>
+    <div class="story reveal" style="margin-top:22px;">
+      <p>If you're anything like I was, you've spent hours scrolling TikTok, Instagram, or YouTube looking for a legitimate way to make money online.</p>
+      <p>One person says <b style="color:#fff;">"Start affiliate marketing."</b> Another says <b style="color:#fff;">"Trade forex."</b> Someone else says <b style="color:#fff;">"Do crypto."</b></p>
+      <p>Before long, you're overwhelmed, stressed and frustrated. You spend hours watching videos… saving posts… taking screenshots… and you're still exactly where you started.</p>
+      <p class="final">If that sounds familiar — keep reading. This page might just save you months of frustration.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2>Here's What Most People <span class="hl-gold">Don't Realize…</span></h2>
+    <p style="margin-top:18px;">Every single day — authors, foreign companies, publishing companies — need people who can write.</p>
+    <p style="margin-top:10px;font-family:'Poppins',sans-serif;font-weight:800;font-size:20px;color:#fff;">Not influencers. Not traders. <span class="hl-purple">Writers.</span></p>
+    <p style="margin-top:14px;">The problem? Nobody teaches beginners <b style="color:#fff;">how</b> to get started. That's exactly why I created <b style="color:var(--gold);">The Ghostwriting Profit System</b> — a step-by-step program that takes you from "I don't know where to start" to confidently pursuing writing opportunities.</p>
+    <div class="beam-callout">
+      <div class="txt">The System Most Beginners <span class="hl">Never Get Shown</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2>Imagine <span class="hl-purple">This…</span></h2>
+    <p class="serif" style="margin-top:14px;color:#fff;font-weight:600;">Six months from now…</p>
+    <div class="change-card">
+      <span class="ico">✍️</span>
+      <h3>You're confidently improving your writing.</h3>
+      <p>You know how to structure stories, and you understand exactly how ghostwriting works.</p>
+    </div>
+    <div class="change-card">
+      <span class="ico">🌍</span>
+      <h3>You know exactly where to look for opportunities.</h3>
+      <p>No more guessing which platforms are legit or wasting weeks searching.</p>
+    </div>
+    <div class="change-card">
+      <span class="ico">💳</span>
+      <h3>You understand how international payments work.</h3>
+      <p>And every day, you're getting better at a skill you can keep building over time.</p>
+    </div>
+    <p style="margin-top:20px;color:#fff;font-weight:600;">That's the transformation I want for my students.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <span class="eyebrow">My Story</span>
+    <h2 style="margin-top:14px;">Hi, I'm <span class="hl-gold">Annie.</span></h2>
+    <div class="story-hero-photo">
+      <img src="images/annie-hero.png" alt="Coach Annie">
+    </div>
+    <p style="margin-top:22px;">And if you're reading this — I'm really glad you're here. Because this course isn't just another online class. It's everything I wish someone had handed me when I started.</p>
+    <p style="margin-top:14px;">I started out broke, struggling and frustrated —</p>
+    <p style="margin-top:10px;color:var(--gold-bright);font-family:'Poppins',sans-serif;font-weight:700;font-size:19px;">to building the skill and confidence to do all of this from the comfort of my home 😍</p>
+
+    <div class="story-photos">
+      <figure>
+        <img src="images/annie-before.png" alt="Where I started" loading="lazy">
+        <figcaption>Where I Started</figcaption>
+      </figure>
+      <figure>
+        <img src="images/annie-car.png" alt="Where ghostwriting took me" loading="lazy">
+        <figcaption>Where It Took Me</figcaption>
+      </figure>
+    </div>
+
+    <p style="margin-top:22px;">And I thought — instead of spending months trying to figure everything out, let me put everything I learnt into one roadmap to help people like you.</p>
+    <p style="margin-top:10px;color:#fff;font-weight:600;">One place. One system. So you don't have to learn the hard way.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <div class="stat-grid">
+      <div class="stat-box"><div class="num">9</div><div class="lbl">Modules</div></div>
+      <div class="stat-box"><div class="num">20+</div><div class="lbl">Platforms</div></div>
+      <div class="stat-box"><div class="num">40+</div><div class="lbl">Lessons</div></div>
+      <div class="stat-box"><div class="num">₦40K</div><div class="lbl">Full Access</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2>📚 🚀 What You'll Have Access To <span class="hl-purple">The Moment You Join</span></h2>
+    <p style="margin-top:16px;">Inside The Ghostwriting Profit System, I've broken everything down into a step-by-step roadmap so you know exactly what to learn, when to learn it, and how to apply it.</p>
+    <p style="margin-top:10px;">Whether you're a complete beginner or someone who's been trying to figure things out alone, every module is designed to help you move forward with confidence.</p>
+    <p style="margin-top:14px;color:var(--gold-bright);font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:.08em;font-size:13px;text-transform:uppercase;">Firstly,</p>
+
+    <div style="margin-top:6px;">
+      <div class="mod-item">
+        <div class="n">01</div>
+        <div>
+          <h3>✍️ Writing Secrets That Separate Beginners From Professionals</h3>
+          <p>Imagine knowing exactly how to write stories people actually enjoy reading. No more guessing. No more wondering if you're doing it right.</p>
+        </div>
+      </div>
+      <div class="mod-item">
+        <div class="n">02</div>
+        <div>
+          <h3>🤖 Steal My AI Writing System</h3>
+          <p>Not to let AI write for you — to help you write faster, better, with less stress. You'll get the exact prompts and workflows I use to beat writer's block.</p>
+        </div>
+      </div>
+      <div class="mod-item">
+        <div class="n">03</div>
+        <div>
+          <h3>🌍 Instant Access To 20 Ghostwriting Companies</h3>
+          <p>Instead of spending weeks searching online, I'll hand you 20 different platforms and show you exactly how to apply. No confusion. No endless Google searches.</p>
+        </div>
+      </div>
+      <div class="mod-item">
+        <div class="n">04</div>
+        <div>
+          <h3>Write Stories With Incredible Plot Twists</h3>
+          <p>Stories that keep generating interest every time because of their amazing plot twist and cliffhanger.</p>
+        </div>
+      </div>
+      <div class="mod-item">
+        <div class="n">05</div>
+        <div>
+          <h3>💳 Finally Understand How Writers Actually Get Paid</h3>
+          <p>"Okay… but how will I receive my money?" Inside TGPS, I break everything down step-by-step so you're no longer confused by international payments.</p>
+        </div>
+      </div>
+      <div class="mod-item">
+        <div class="n">06</div>
+        <div>
+          <h3>🚀 Learn How Experienced Ghostwriters Grow</h3>
+          <p>Ghostwriting doesn't end with writing. A training is included on how you can outsource to other writers while you're chilling.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2>🎁 But That's <span class="hl-gold">Not All…</span></h2>
+    <p style="margin-top:12px;">You'll also unlock…</p>
+    <div style="margin-top:6px;">
+      <div class="bonus-row"><span class="mark">🔥</span> YouTube Automation Training</div>
+      <div class="bonus-row"><span class="mark">🔥</span> Forex Introduction</div>
+      <div class="bonus-row"><span class="mark">🔥</span> AI Prompt Vault</div>
+      <div class="bonus-row"><span class="mark">🔥</span> Certificate of Completion</div>
+      <div class="bonus-row"><span class="mark">🔥</span> Amazon Publishing Training</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2>Exclusive Student <span class="hl-purple">Community</span></h2>
+    <p style="margin-top:16px;">Learning is much easier when you're surrounded by people who are on the same journey. As a student, you'll gain access to our private support community where you can:</p>
+    <ul class="comm-list">
+      <li>Ask questions</li>
+      <li>Connect with fellow students</li>
+      <li>Share your progress</li>
+      <li>Celebrate your wins</li>
+      <li>Stay motivated throughout your learning journey</li>
+    </ul>
+    <p style="margin-top:20px;color:#fff;font-weight:600;">You're never expected to figure everything out alone.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2>Still Doubting 🤔</h2>
+    <h2 style="margin-top:6px;">⭐ Real Students. <span class="hl-gold">Real Progress.</span></h2>
+    <p style="margin-top:16px;">"Has anyone actually gone through this course?" The answer is yes. Here are just a few of the messages students have shared with me.</p>
+
+    <div class="result-grid">
+      <img src="images/result-income-1367.png" alt="Student income result" loading="lazy">
+      <img src="images/result-tgps-chat.png" alt="Student community win" loading="lazy">
+      <img src="images/result-school-fees.png" alt="Student paying school fees with ghostwriting income" loading="lazy">
+      <img src="images/result-usd-balance.png" alt="Student USD balance" loading="lazy">
+    </div>
+    <div style="margin-top:12px;">
+      <img src="images/result-payoneer-250.png" alt="Student payment transfer" loading="lazy">
+    </div>
+
+    <p style="margin-top:24px;color:var(--gold-bright);font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;">Imagine where you could be six months from today if you started now instead of waiting another year.</p>
+
+    <div class="cta-block">
+      <a class="btn-wa" href="https://wa.me/message/HTAF5RIUY567J1" target="_blank">
+        <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.744 5.5 2.05 7.813L0 32l8.418-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.13 22.61c-.347.977-1.72 1.79-2.822 2.02-.75.157-1.73.283-5.02-1.078-4.214-1.746-6.93-6.02-7.144-6.3-.207-.28-1.706-2.27-1.706-4.33 0-2.06 1.08-3.073 1.463-3.497.383-.423.834-.53 1.113-.53.28 0 .557.003.8.015.257.012.6-.098.938.716.347.833 1.18 2.877 1.283 3.086.104.21.174.457.035.737-.14.28-.21.454-.42.7-.21.245-.44.548-.63.735-.21.208-.428.435-.184.855.244.42 1.08 1.784 2.322 2.89 1.596 1.423 2.94 1.865 3.36 2.075.42.21.665.175.91-.106.245-.28 1.043-1.216 1.322-1.633.28-.418.56-.348.945-.208.386.14 2.44 1.15 2.858 1.36.42.21.7.315.805.49.104.175.104 1.012-.243 1.99z"/></svg>
+        Chat Me on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal" style="text-align:center;">
+    <h2>Still Thinking <span class="hl-purple">About It?</span></h2>
+    <p style="margin-top:16px;">If you've made it this far, you're probably wondering: <b style="color:#fff;">"Is this course right for me?"</b></p>
+    <p style="margin-top:10px;">The best way to find out is to send me a message. Tell me a little about yourself, where you're starting from, and what you're hoping to achieve.</p>
+    <p style="margin-top:10px;">I'll personally answer your questions and help you decide whether The Ghostwriting Profit System is the right next step for you.</p>
+    <div class="cta-block">
+      <a class="btn-wa" href="https://wa.me/message/HTAF5RIUY567J1" target="_blank">
+        <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.744 5.5 2.05 7.813L0 32l8.418-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.13 22.61c-.347.977-1.72 1.79-2.822 2.02-.75.157-1.73.283-5.02-1.078-4.214-1.746-6.93-6.02-7.144-6.3-.207-.28-1.706-2.27-1.706-4.33 0-2.06 1.08-3.073 1.463-3.497.383-.423.834-.53 1.113-.53.28 0 .557.003.8.015.257.012.6-.098.938.716.347.833 1.18 2.877 1.283 3.086.104.21.174.457.035.737-.14.28-.21.454-.42.7-.21.245-.44.548-.63.735-.21.208-.428.435-.184.855.244.42 1.08 1.784 2.322 2.89 1.596 1.423 2.94 1.865 3.36 2.075.42.21.665.175.91-.106.245-.28 1.043-1.216 1.322-1.633.28-.418.56-.348.945-.208.386.14 2.44 1.15 2.858 1.36.42.21.7.315.805.49.104.175.104 1.012-.243 1.99z"/></svg>
+        Chat With Me on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2>Here's What People Are <span class="hl-gold">Saying</span></h2>
+    <div class="review-card"><img src="images/review-hauwau.png" alt="Review from Hauwa'u Suleiman" loading="lazy"></div>
+    <div class="review-card"><img src="images/review-zainab-ulasi.png" alt="Reviews from Zainab Adebayo and Ulasi Chikaosolu" loading="lazy"></div>
+    <div class="review-card"><img src="images/review-henrietta.png" alt="Review from Henrietta Owoeyewise" loading="lazy"></div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2 style="text-align:center;">One Decision. <span class="hl-purple">Everything Changes.</span></h2>
+    <div class="urgency-box">
+      <div class="label">🔥 Price Increases In</div>
+      <div class="timer-row">
+        <div class="timer-box"><div class="n" id="cd-d">00</div><div class="l">Days</div></div>
+        <div class="timer-box"><div class="n" id="cd-h">00</div><div class="l">Hours</div></div>
+        <div class="timer-box"><div class="n" id="cd-m">00</div><div class="l">Mins</div></div>
+        <div class="timer-box"><div class="n" id="cd-s">00</div><div class="l">Secs</div></div>
+      </div>
+    </div>
+    <div class="price-block">
+      <div class="price-was">₦100,000</div>
+      <div class="price-now">₦40,000</div>
+      <div class="save-pill">YOU SAVE ₦60,000 TODAY</div>
+    </div>
+    <div class="cta-block">
+      <a class="btn-wa" href="https://wa.me/message/HTAF5RIUY567J1" target="_blank">
+        <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.744 5.5 2.05 7.813L0 32l8.418-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.13 22.61c-.347.977-1.72 1.79-2.822 2.02-.75.157-1.73.283-5.02-1.078-4.214-1.746-6.93-6.02-7.144-6.3-.207-.28-1.706-2.27-1.706-4.33 0-2.06 1.08-3.073 1.463-3.497.383-.423.834-.53 1.113-.53.28 0 .557.003.8.015.257.012.6-.098.938.716.347.833 1.18 2.877 1.283 3.086.104.21.174.457.035.737-.14.28-.21.454-.42.7-.21.245-.44.548-.63.735-.21.208-.428.435-.184.855.244.42 1.08 1.784 2.322 2.89 1.596 1.423 2.94 1.865 3.36 2.075.42.21.665.175.91-.106.245-.28 1.043-1.216 1.322-1.633.28-.418.56-.348.945-.208.386.14 2.44 1.15 2.858 1.36.42.21.7.315.805.49.104.175.104 1.012-.243 1.99z"/></svg>
+        Chat Me on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <span class="eyebrow">Questions Answered</span>
+    <h2 style="margin-top:14px;">❓ Frequently Asked <span class="hl-gold">Questions</span></h2>
+    <div style="margin-top:14px;">
+      <div class="faq-item">
+        <button class="faq-q">I've never written professionally before. Can I still join? <span class="chev">+</span></button>
+        <div class="faq-a"><p>Absolutely. The course starts with the fundamentals and gradually builds your skills, making it suitable for complete beginners who are willing to learn and practice.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I take this course using just my phone? <span class="chev">+</span></button>
+        <div class="faq-a"><p>Yes. Many lessons can be followed using a smartphone. However, depending on the type of writing work you pursue in the future, you may eventually find a computer helpful for certain tasks.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How will I access the course? <span class="chev">+</span></button>
+        <div class="faq-a"><p>Once your payment is confirmed, you'll receive an email with your Nestuge login details so you can start learning immediately.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will I have support after joining? <span class="chev">+</span></button>
+        <div class="faq-a"><p>Yes. You'll have access to our private student community, where you can ask questions and interact with other learners as you progress.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How much is the course? <span class="chev">+</span></button>
+        <div class="faq-a"><p>The Ghostwriting Profit System is currently available for ₦40,000.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long do I have access? <span class="chev">+</span></button>
+        <div class="faq-a"><p>You get lifetime access, including future updates.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap reveal">
+    <h2>🎥 Still Have <span class="hl-purple">Questions?</span></h2>
+    <p style="margin-top:14px;">If you'd like a more detailed explanation before making your decision, watch the full video below. In this video, I'll walk you through:</p>
+    <ul class="comm-list" style="margin-top:14px;">
+      <li>What The Ghostwriting Profit System is</li>
+      <li>Who it's designed for</li>
+      <li>Everything that's included</li>
+      <li>How the training works</li>
+      <li>What happens after you join</li>
+    </ul>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/jEJBrHmxwsE" title="The Ghostwriting Profit System" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap reveal">
+    <h2>Ready to Take the First Step 🥹🔥</h2>
+    <p style="margin-top:16px;max-width:460px;margin-left:auto;margin-right:auto;">Every experienced writer started as a beginner. The difference is that they made the decision to learn.</p>
+    <p style="margin-top:10px;">If you're ready to stop guessing and start following a clear roadmap, I'd love to help you begin your ghostwriting journey.</p>
+    <div class="cta-block">
+      <a class="btn-wa" href="https://wa.me/message/HTAF5RIUY567J1" target="_blank">
+        <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.744 5.5 2.05 7.813L0 32l8.418-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.13 22.61c-.347.977-1.72 1.79-2.822 2.02-.75.157-1.73.283-5.02-1.078-4.214-1.746-6.93-6.02-7.144-6.3-.207-.28-1.706-2.27-1.706-4.33 0-2.06 1.08-3.073 1.463-3.497.383-.423.834-.53 1.113-.53.28 0 .557.003.8.015.257.012.6-.098.938.716.347.833 1.18 2.877 1.283 3.086.104.21.174.457.035.737-.14.28-.21.454-.42.7-.21.245-.44.548-.63.735-.21.208-.428.435-.184.855.244.42 1.08 1.784 2.322 2.89 1.596 1.423 2.94 1.865 3.36 2.075.42.21.665.175.91-.106.245-.28 1.043-1.216 1.322-1.633.28-.418.56-.348.945-.208.386.14 2.44 1.15 2.858 1.36.42.21.7.315.805.49.104.175.104 1.012-.243 1.99z"/></svg>
+        Chat With Me on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-bar">
+  <div class="price">
+    <div class="was">₦100,000</div>
+    <div class="now">₦40,000</div>
+  </div>
+  <a class="btn-wa" href="https://wa.me/message/HTAF5RIUY567J1" target="_blank">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.744 5.5 2.05 7.813L0 32l8.418-2.007A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.13 22.61c-.347.977-1.72 1.79-2.822 2.02-.75.157-1.73.283-5.02-1.078-4.214-1.746-6.93-6.02-7.144-6.3-.207-.28-1.706-2.27-1.706-4.33 0-2.06 1.08-3.073 1.463-3.497.383-.423.834-.53 1.113-.53.28 0 .557.003.8.015.257.012.6-.098.938.716.347.833 1.18 2.877 1.283 3.086.104.21.174.457.035.737-.14.28-.21.454-.42.7-.21.245-.44.548-.63.735-.21.208-.428.435-.184.855.244.42 1.08 1.784 2.322 2.89 1.596 1.423 2.94 1.865 3.36 2.075.42.21.665.175.91-.106.245-.28 1.043-1.216 1.322-1.633.28-.418.56-.348.945-.208.386.14 2.44 1.15 2.858 1.36.42.21.7.315.805.49.104.175.104 1.012-.243 1.99z"/></svg>
+    Chat
+  </a>
+</div>
+
+<script>
+  (function(){
+    var target = new Date("2026-07-18T23:59:59").getTime();
+    var elD = document.getElementById('cd-d');
+    var elH = document.getElementById('cd-h');
+    var elM = document.getElementById('cd-m');
+    var elS = document.getElementById('cd-s');
+    function tick(){
+      var diff = target - new Date().getTime();
+      if (diff < 0) diff = 0;
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      if (elD) elD.textContent = String(d).padStart(2,'0');
+      if (elH) elH.textContent = String(h).padStart(2,'0');
+      if (elM) elM.textContent = String(m).padStart(2,'0');
+      if (elS) elS.textContent = String(s).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ entry.target.classList.add('in-view'); observer.unobserve(entry.target); }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=>o.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
